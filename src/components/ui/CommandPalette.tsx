@@ -7,7 +7,6 @@ import {
   HomeIcon, 
   FileTextIcon, 
   ReaderIcon, 
-  LaptopIcon, 
   MagnifyingGlassIcon,
   LayersIcon
 } from "@radix-ui/react-icons";
@@ -18,12 +17,17 @@ export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
-  // Toggle command menu with Ctrl+K or Cmd+K
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
+      // Toggle command menu with Ctrl+K or Cmd+K
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         setOpen((prev) => !prev);
+      }
+
+      // Close on Escape
+      if (e.key === "Escape") {
+        setOpen(false);
       }
     };
 
@@ -49,7 +53,10 @@ export function CommandPalette() {
 
       {/* Command Dialog Overlay */}
       {open && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-start justify-center pt-24 px-4 animate-in fade-in duration-200">
+        <div 
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-start justify-center pt-24 px-4 animate-in fade-in duration-200"
+        >
           <div 
             className="w-full max-w-lg rounded-xl border border-zinc-800 bg-[#121212] shadow-2xl overflow-hidden text-zinc-200"
             onClick={(e) => e.stopPropagation()}
@@ -106,6 +113,7 @@ export function CommandPalette() {
                   {PROJECTS_DATA.map((proj) => (
                     <Command.Item
                       key={proj.slug}
+                      value={`${proj.name} ${proj.category}`}
                       onSelect={() => runCommand(() => router.push(`/projects/${proj.slug}`))}
                       className="flex items-center justify-between px-3 py-2 text-xs rounded-lg text-zinc-300 aria-selected:bg-zinc-800 aria-selected:text-zinc-100 cursor-pointer transition-colors"
                     >
@@ -120,6 +128,7 @@ export function CommandPalette() {
                   {BLOG_POSTS.map((post) => (
                     <Command.Item
                       key={post.slug}
+                      value={post.title}
                       onSelect={() => runCommand(() => router.push(`/blog/${post.slug}`))}
                       className="flex flex-col gap-0.5 px-3 py-2 text-xs rounded-lg text-zinc-300 aria-selected:bg-zinc-800 aria-selected:text-zinc-100 cursor-pointer transition-colors"
                     >
@@ -128,7 +137,6 @@ export function CommandPalette() {
                     </Command.Item>
                   ))}
                 </Command.Group>
-
               </Command.List>
 
               <div className="border-t border-zinc-800 px-4 py-2.5 flex items-center justify-between text-[11px] text-zinc-500 font-mono">
