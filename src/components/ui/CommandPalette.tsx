@@ -64,7 +64,7 @@ export function CommandPalette() {
                 />
               </div>
 
-              <Command.List className="max-h-[320px] overflow-y-auto p-2 space-y-1">
+              <Command.List className="max-h-80 overflow-y-auto p-2 space-y-1">
                 <Command.Empty className="py-6 text-center text-xs text-zinc-500">
                   No results found.
                 </Command.Empty>

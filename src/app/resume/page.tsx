@@ -15,7 +15,7 @@ export default function ResumePage() {
         
         {/* EXTERNAL LINK BUTTON */}
         <a 
-          href="/yash_namdeo_resume.pdf" 
+          href="https://drive.google.com/file/d/1dWvOV_fFBWGPgxacTBJcC10FsOoxtSnn/view?usp=sharing" 
           target="_blank" 
           rel="noopener noreferrer"
           className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-md bg-zinc-900/80 border border-zinc-700 text-zinc-300 backdrop-blur-sm hover:bg-zinc-800 hover:text-zinc-100 transition-colors"
@@ -25,11 +25,12 @@ export default function ResumePage() {
         </a>
 
         {/* IFRAME EMBED */}
-        <div className="h-[800px] w-full overflow-hidden rounded-lg bg-zinc-100">
+        <div className="h-200 w-full overflow-hidden rounded-lg bg-zinc-100">
           <iframe 
-            src="/yash_namdeo_resume.pdf#toolbar=0&navpanes=0" 
+            src="https://drive.google.com/file/d/1dWvOV_fFBWGPgxacTBJcC10FsOoxtSnn/preview" 
             className="h-full w-full border-none bg-white"
             title="Yash Namdeo Resume"
+            allow="autoplay"
           />
         </div>
         

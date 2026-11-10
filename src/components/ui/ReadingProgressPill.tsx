@@ -39,9 +39,9 @@ export function ReadingProgressPill({ sections }: { sections: SectionItem[] }) {
 
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 pointer-events-none">
-      <div className="flex items-center gap-3 rounded-full border border-zinc-800 bg-zinc-950/90 px-4 py-2 text-xs text-zinc-200 shadow-2xl backdrop-blur-md">
+      <div className="flex items-center gap-3 rounded-full border border-zinc-800 bg-zinc-950/90 px-6 py-4 text-sm text-zinc-200 shadow-2xl backdrop-blur-md">
         <span className="h-1.5 w-1.5 rounded-full bg-zinc-100" />
-        <span className="max-w-[180px] truncate font-medium">{activeLabel}</span>
+        <span className="max-w-45 truncate font-medium">{activeLabel}</span>
         
         {/* SVG Circular Progress Indicator */}
         <svg className="h-5 w-5 -rotate-90" viewBox="0 0 24 24">

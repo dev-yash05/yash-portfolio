@@ -130,7 +130,7 @@ export default function BlogIndexPage() {
           style={{
             transform: `translate3d(${cursorPos.x + 24}px, ${cursorPos.y - 80}px, 0)`,
           }}
-          className="pointer-events-none fixed left-0 top-0 z-50 hidden md:flex h-44 w-72 flex-col justify-between rounded-xl border border-zinc-300 bg-white p-5 text-zinc-900 shadow-2xl transition-transform duration-75 ease-out bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:16px_16px]"
+          className="pointer-events-none fixed left-0 top-0 z-50 hidden md:flex h-44 w-72 flex-col justify-between rounded-xl border border-zinc-300 bg-white p-5 text-zinc-900 shadow-2xl transition-transform duration-75 ease-out bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-size-[16px_16px]"
         >
           <div className="text-[10px] font-mono uppercase tracking-wider text-zinc-400">
             {hoveredPost.coverSubtitle}

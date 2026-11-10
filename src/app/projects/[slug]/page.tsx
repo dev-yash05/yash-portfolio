@@ -56,7 +56,7 @@ export default async function ProjectCaseStudyPage({
 
       {/* HERO BANNER CARD & SERIF HEADER */}
       <header id="overview" className="space-y-6 scroll-mt-24">
-        <div className="rounded-xl border border-zinc-800 bg-gradient-to-b from-zinc-900/80 to-zinc-950 p-8 text-center space-y-3">
+        <div className="rounded-xl border border-zinc-800 bg-linear-to-b from-zinc-900/80 to-zinc-950 p-8 text-center space-y-3">
           <span className="inline-block rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-[11px] font-medium text-zinc-400">
             {project.category} • {project.year}
           </span>

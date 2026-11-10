@@ -7,6 +7,8 @@ import { ReadingProgressPill } from "@/components/ui/ReadingProgressPill";
 
 const playfair = Playfair_Display({ subsets: ["latin"], weight: ["600", "700"] });
 
+export const instant = false;
+
 export function generateStaticParams() {
   return BLOG_POSTS.map((post) => ({
     slug: post.slug,
@@ -48,7 +50,7 @@ export default async function BlogPostPage({
       </div>
 
       {/* WHITE GRID-PATTERNED HERO CARD (Matches Reference Image 4) */}
-      <div className="relative flex min-h-[260px] flex-col justify-between rounded-xl border border-zinc-200 bg-white p-8 text-zinc-900 shadow-xl bg-[linear-gradient(to_right,#efefef_1px,transparent_1px),linear-gradient(to_bottom,#efefef_1px,transparent_1px)] bg-[size:22px_22px]">
+      <div className="relative flex min-h-65 flex-col justify-between rounded-xl border border-zinc-200 bg-white p-8 text-zinc-900 shadow-xl bg-[linear-gradient(to_right,#efefef_1px,transparent_1px),linear-gradient(to_bottom,#efefef_1px,transparent_1px)] bg-size-[22px_22px]">
         <div className="text-xs font-mono uppercase tracking-widest text-zinc-400">
           {post.coverSubtitle}
         </div>

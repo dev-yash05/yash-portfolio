@@ -135,7 +135,7 @@ export default function ProjectsPage() {
                               className="h-4 w-4 shrink-0"
                             />
                           )}
-                          <span className="max-w-0 overflow-hidden whitespace-nowrap text-xs font-medium text-zinc-200 group-hover/badge:max-w-[120px] group-hover/badge:ml-2 transition-all duration-300">
+                          <span className="max-w-0 overflow-hidden whitespace-nowrap text-xs font-medium text-zinc-200 group-hover/badge:max-w-30 group-hover/badge:ml-2 transition-all duration-300">
                             {tech}
                           </span>
                         </div>

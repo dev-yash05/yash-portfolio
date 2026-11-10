@@ -188,7 +188,7 @@ export function ProjectsSection() {
                               />
                             )}
                             {/* Expanding Label on Hover (just like the React pill in your screenshot) */}
-                            <span className="max-w-0 overflow-hidden whitespace-nowrap text-xs font-medium text-zinc-200 group-hover/badge:max-w-[120px] group-hover/badge:ml-2 transition-all duration-300 ease-out">
+                            <span className="max-w-0 overflow-hidden whitespace-nowrap text-xs font-medium text-zinc-200 group-hover/badge:max-w-30 group-hover/badge:ml-2 transition-all duration-300 ease-out">
                               {tech}
                             </span>
                           </div>
