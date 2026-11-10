@@ -9,7 +9,7 @@ import {
 import { ProjectsSection } from "@/components/layout/ProjectsSection";
 import { BlogSection } from "@/components/layout/BlogSection";
 import { InteractiveAvatar } from "@/components/animations/InteractiveAvatar";
-import { InteractiveDeveloperAvatar } from "@/components/animations/InteractiveDeveloperAvatar";
+
 
 const EXPERIENCES = [
   {
@@ -24,23 +24,20 @@ const EXPERIENCES = [
 export default function HomePage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-12 space-y-20">
+      
       {/* HERO SECTION */}
       <section className="space-y-6">
         <div className="flex items-center gap-6">
-          <InteractiveAvatar
-            src="/images/avatar.png"
-            alt="Yash Namdeo"
-            size={80}
-          />
+          <InteractiveAvatar size={80} src="/images/avatar.png" alt="Yash Namdeo" />
           <div>
-            <h1 className="text-2xl font-bold text-zinc-100 tracking-tight">
+            <h1 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight transition-colors">
               Yash Namdeo
             </h1>
-            <p className="text-sm text-zinc-400 mt-1 flex items-center gap-2">
+            <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1 flex items-center gap-2 transition-colors">
               Engineer • Full Stack Developer •
               <a
                 href="mailto:yashnamdeo754@gmail.com"
-                className="hover:text-zinc-100 transition-colors flex items-center gap-1"
+                className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors flex items-center gap-1"
               >
                 yashnamdeo754@gmail.com <ExternalLinkIcon className="w-3 h-3" />
               </a>
@@ -48,40 +45,40 @@ export default function HomePage() {
           </div>
         </div>
 
-        <p className="text-zinc-400 leading-relaxed max-w-2xl text-sm">
+        <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl text-sm transition-colors">
           System-first software engineer building production-grade web
           applications. Passionate about modular monolith architectures, robust
           security configurations, and meticulously crafted digital experiences.
         </p>
 
-        <div className="flex items-center gap-4 text-zinc-400">
+        <div className="flex items-center gap-4 text-zinc-500 dark:text-zinc-400">
           <a
             href="https://github.com/dev-yash05"
-            className="hover:text-zinc-100 transition-colors"
+            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
           >
             <GitHubLogoIcon className="w-5 h-5" />
           </a>
           <a
             href="https://www.linkedin.com/in/yash-namdeo/"
-            className="hover:text-zinc-100 transition-colors"
+            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
           >
             <LinkedInLogoIcon className="w-5 h-5" />
           </a>
           <a
             href="https://x.com/yashx404"
-            className="hover:text-zinc-100 transition-colors"
+            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
           >
             <TwitterLogoIcon className="w-5 h-5" />
           </a>
           <a
             href="mailto:yashnamdeo754@gmail.com"
-            className="hover:text-zinc-100 transition-colors"
+            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
           >
             <EnvelopeClosedIcon className="w-5 h-5" />
           </a>
           <a
             href="https://medium.com/@yashnamdeo754"
-            className="hover:text-zinc-100 transition-colors"
+            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
           >
             <Pencil2Icon className="w-5 h-5" />
           </a>
@@ -90,7 +87,7 @@ export default function HomePage() {
 
       {/* EXPERIENCE SECTION */}
       <section className="space-y-6">
-        <h2 className="text-xl font-bold text-zinc-100 tracking-tight">
+        <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight transition-colors">
           Experience
         </h2>
         <div className="space-y-8">
@@ -100,18 +97,18 @@ export default function HomePage() {
               className="flex flex-col sm:flex-row sm:items-baseline justify-between group"
             >
               <div>
-                <h3 className="font-medium text-zinc-100 flex items-center gap-2 text-base">
+                <h3 className="font-medium text-zinc-900 dark:text-zinc-100 flex items-center gap-2 text-base transition-colors">
                   {exp.company}
                   {exp.active && (
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400 border border-emerald-500/20">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 dark:bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                       Working
                     </span>
                   )}
                 </h3>
-                <p className="text-sm text-zinc-400 mt-1">{exp.role}</p>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1 transition-colors">{exp.role}</p>
               </div>
-              <div className="text-sm text-zinc-500 text-left sm:text-right mt-2 sm:mt-0">
+              <div className="text-sm text-zinc-500 dark:text-zinc-500 text-left sm:text-right mt-2 sm:mt-0 transition-colors">
                 <p>{exp.date}</p>
                 <p>{exp.location}</p>
               </div>

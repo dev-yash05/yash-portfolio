@@ -1,6 +1,11 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 import { 
   SunIcon, 
+  MoonIcon,
   HomeIcon, 
   LayersIcon, 
   ReaderIcon, 
@@ -16,19 +21,23 @@ const NAV_LINKS = [
 ];
 
 export function Navbar() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Ensure component is mounted to avoid hydration mismatch with next-themes
+  useEffect(() => setMounted(true), []);
+
   return (
-    <header className="sticky top-0 z-40 mx-auto w-full max-w-3xl px-4 sm:px-6 py-4 flex items-center justify-between bg-[#0d0d0d]/80 backdrop-blur-md">
-      <nav className="flex items-center gap-3 sm:gap-6 text-sm font-medium text-zinc-400">
+    <header className="sticky top-0 z-40 mx-auto w-full max-w-3xl px-4 sm:px-6 py-4 flex items-center justify-between bg-white/80 dark:bg-[#0d0d0d]/80 backdrop-blur-md transition-colors duration-300">
+      <nav className="flex items-center gap-3 sm:gap-6 text-sm font-medium text-zinc-500 dark:text-zinc-400">
         {NAV_LINKS.map(({ href, label, icon: Icon }) => (
-          <Link
-            key={href}
-            href={href}
-            className="flex items-center gap-1.5 p-1.5 sm:p-0 rounded-md text-zinc-400 hover:text-zinc-100 transition-colors"
-            aria-label={label}
+          <Link 
+            key={href} 
+            href={href} 
+            aria-label={label} 
+            className="flex items-center gap-1.5 p-1.5 sm:p-0 rounded-md hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
           >
-            {/* Mobile: Radix Icon */}
             <Icon className="w-4 h-4 sm:hidden" />
-            {/* Desktop: Text Label */}
             <span className="hidden sm:inline">{label}</span>
           </Link>
         ))}
@@ -37,10 +46,15 @@ export function Navbar() {
       <div className="flex items-center gap-2 sm:gap-4">
         <CommandPalette />
         <button 
-          className="p-1.5 sm:p-0 text-zinc-400 hover:text-zinc-100 transition-colors" 
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="p-1.5 sm:p-0 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" 
           aria-label="Toggle theme"
         >
-          <SunIcon className="w-4 h-4" />
+          {mounted && theme === "dark" ? (
+            <SunIcon className="w-4 h-4" />
+          ) : (
+            <MoonIcon className="w-4 h-4" />
+          )}
         </button>
       </div>
     </header>
