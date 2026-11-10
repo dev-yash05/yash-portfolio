@@ -10,7 +10,6 @@ import { ProjectsSection } from "@/components/layout/ProjectsSection";
 import { BlogSection } from "@/components/layout/BlogSection";
 import { InteractiveAvatar } from "@/components/animations/InteractiveAvatar";
 
-
 const EXPERIENCES = [
   {
     company: "Lanos IT Solutions",
@@ -23,62 +22,75 @@ const EXPERIENCES = [
 
 export default function HomePage() {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-12 space-y-20">
-      
+    <div className="mx-auto max-w-3xl px-6 py-12 space-y-20 selection:bg-accent selection:text-accent-foreground">
       {/* HERO SECTION */}
       <section className="space-y-6">
         <div className="flex items-center gap-6">
-          <InteractiveAvatar size={80} src="/images/avatar.png" alt="Yash Namdeo" />
+          <InteractiveAvatar
+            size={80}
+            src="/images/avatar.png"
+            alt="Yash Namdeo"
+          />
           <div>
-            <h1 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight transition-colors">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight transition-colors">
               Yash Namdeo
             </h1>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1 flex items-center gap-2 transition-colors">
-              Engineer • Full Stack Developer •
+            <p className="text-sm text-muted-foreground mt-1 flex flex-wrap items-center gap-2 transition-colors">
+              <span>Engineer</span>
+              <span>•</span>
+              <span>Full Stack Developer</span>
+              <span>•</span>
               <a
                 href="mailto:yashnamdeo754@gmail.com"
-                className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors flex items-center gap-1"
+                className="hover:text-accent transition-colors inline-flex items-center gap-1 font-medium underline underline-offset-4 decoration-border hover:decoration-accent"
               >
-                yashnamdeo754@gmail.com <ExternalLinkIcon className="w-3 h-3" />
+                yashnamdeo754@gmail.com{" "}
+                <ExternalLinkIcon className="w-3.5 h-3.5" />
               </a>
             </p>
           </div>
         </div>
 
-        <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl text-sm transition-colors">
+        <p className="text-muted-foreground leading-relaxed max-w-2xl text-sm transition-colors">
           System-first software engineer building production-grade web
           applications. Passionate about modular monolith architectures, robust
           security configurations, and meticulously crafted digital experiences.
         </p>
 
-        <div className="flex items-center gap-4 text-zinc-500 dark:text-zinc-400">
+        {/* SOCIAL LINKS */}
+        <div className="flex items-center gap-5 text-muted-foreground">
           <a
             href="https://github.com/dev-yash05"
-            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+            aria-label="GitHub Profile"
+            className="hover:text-accent hover:scale-110 transition-all duration-150"
           >
             <GitHubLogoIcon className="w-5 h-5" />
           </a>
           <a
             href="https://www.linkedin.com/in/yash-namdeo/"
-            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+            aria-label="LinkedIn Profile"
+            className="hover:text-accent hover:scale-110 transition-all duration-150"
           >
             <LinkedInLogoIcon className="w-5 h-5" />
           </a>
           <a
             href="https://x.com/yashx404"
-            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+            aria-label="Twitter Profile"
+            className="hover:text-accent hover:scale-110 transition-all duration-150"
           >
             <TwitterLogoIcon className="w-5 h-5" />
           </a>
           <a
             href="mailto:yashnamdeo754@gmail.com"
-            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+            aria-label="Send Email"
+            className="hover:text-accent hover:scale-110 transition-all duration-150"
           >
             <EnvelopeClosedIcon className="w-5 h-5" />
           </a>
           <a
             href="https://medium.com/@yashnamdeo754"
-            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+            aria-label="Medium Articles"
+            className="hover:text-accent hover:scale-110 transition-all duration-150"
           >
             <Pencil2Icon className="w-5 h-5" />
           </a>
@@ -87,9 +99,15 @@ export default function HomePage() {
 
       {/* EXPERIENCE SECTION */}
       <section className="space-y-6">
-        <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight transition-colors">
-          Experience
-        </h2>
+        <div className="flex items-center justify-between border-b border-border pb-3">
+          <h2 className="text-xl font-bold text-foreground tracking-tight transition-colors">
+            Experience
+          </h2>
+          <span className="text-xs uppercase tracking-widest text-muted-foreground font-mono">
+            01 / Work
+          </span>
+        </div>
+
         <div className="space-y-8">
           {EXPERIENCES.map((exp, i) => (
             <div
@@ -97,20 +115,22 @@ export default function HomePage() {
               className="flex flex-col sm:flex-row sm:items-baseline justify-between group"
             >
               <div>
-                <h3 className="font-medium text-zinc-900 dark:text-zinc-100 flex items-center gap-2 text-base transition-colors">
+                <h3 className="font-semibold text-foreground flex items-center gap-2.5 text-base transition-colors">
                   {exp.company}
                   {exp.active && (
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 dark:bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-semibold text-accent border border-accent/30 shadow-[0_0_12px_rgba(204,255,0,0.15)]">
+                      <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
                       Working
                     </span>
                   )}
                 </h3>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1 transition-colors">{exp.role}</p>
+                <p className="text-sm text-muted-foreground mt-1 transition-colors font-medium">
+                  {exp.role}
+                </p>
               </div>
-              <div className="text-sm text-zinc-500 dark:text-zinc-500 text-left sm:text-right mt-2 sm:mt-0 transition-colors">
+              <div className="text-sm text-muted-foreground/80 font-mono text-left sm:text-right mt-2 sm:mt-0 transition-colors">
                 <p>{exp.date}</p>
-                <p>{exp.location}</p>
+                <p className="text-xs">{exp.location}</p>
               </div>
             </div>
           ))}
@@ -120,6 +140,7 @@ export default function HomePage() {
       {/* INTERACTIVE PROJECTS SECTION */}
       <ProjectsSection />
 
+      {/* BLOG SECTION */}
       <BlogSection />
     </div>
   );
