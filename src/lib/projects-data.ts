@@ -21,6 +21,7 @@ export interface ProjectCaseStudy {
   live?: string;
   technologies: string[];
   highlights: string[];
+  hasArchitecturePlayground?: boolean;
   // Deep-dive specific fields
   overview: {
     problem: string;
@@ -77,6 +78,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     category: "Full Stack",
     github: "https://github.com/yourusername/carecircle",
     live: "https://carecircle.yashn.me",
+    hasArchitecturePlayground: true,
     technologies: [
       "Next.js",
       "TypeScript",

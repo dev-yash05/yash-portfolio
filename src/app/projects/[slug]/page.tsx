@@ -14,6 +14,7 @@ import {
   getProjectBySlug,
 } from "@/lib/projects-data";
 import { ReadingProgressPill } from "@/components/ui/ReadingProgressPill";
+import { SystemArchitecturePlayground } from "@/components/projects/SystemArchitecturePlayground";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -186,6 +187,13 @@ async function ProjectContent({
             {project.architecture.summary}
           </p>
         </div>
+
+        {/* INTERACTIVE PLAYGROUND (Rendered for projects with the flag) */}
+        {project.hasArchitecturePlayground && (
+          <div className="pt-2">
+            <SystemArchitecturePlayground />
+          </div>
+        )}
 
         {/* SCHEMATIC DIAGRAM BLOCK */}
         <div className="rounded-xl border border-border bg-muted/30 p-5 overflow-x-auto transition-colors">
