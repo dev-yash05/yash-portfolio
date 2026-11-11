@@ -28,30 +28,6 @@ export function InteractiveAvatar({
 
       if (!container || !imageWrapper) return;
 
-      // Quick setters for optimal 60fps / 120fps mouse tracking without GC overhead
-      const setRotateX = gsap.quickTo(imageWrapper, "rotateX", {
-        duration: 0.45,
-        ease: "power2.out",
-      });
-      const setRotateY = gsap.quickTo(imageWrapper, "rotateY", {
-        duration: 0.45,
-        ease: "power2.out",
-      });
-      const setTranslateX = gsap.quickTo(imageWrapper, "x", {
-        duration: 0.45,
-        ease: "power2.out",
-      });
-      const setTranslateY = gsap.quickTo(imageWrapper, "y", {
-        duration: 0.45,
-        ease: "power2.out",
-      });
-      const setHighlightX = highlight
-        ? gsap.quickTo(highlight, "x", { duration: 0.3, ease: "power2.out" })
-        : null;
-      const setHighlightY = highlight
-        ? gsap.quickTo(highlight, "y", { duration: 0.3, ease: "power2.out" })
-        : null;
-
       const handleMouseMove = (e: MouseEvent) => {
         const rect = container.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
@@ -75,26 +51,48 @@ export function InteractiveAvatar({
         const maxTilt = 18; // degrees
         const maxShift = 5; // px parallax translation
 
-        setRotateY(normX * maxTilt);
-        setRotateX(-normY * maxTilt);
-        setTranslateX(normX * maxShift);
-        setTranslateY(normY * maxShift);
+        // Smooth tween using explicit 0-reset compatible GSAP transforms
+        gsap.to(imageWrapper, {
+          rotateY: normX * maxTilt,
+          rotateX: -normY * maxTilt,
+          x: normX * maxShift,
+          y: normY * maxShift,
+          duration: 0.45,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
 
-        if (setHighlightX && setHighlightY) {
-          setHighlightX(normX * 12);
-          setHighlightY(normY * 12);
+        if (highlight) {
+          gsap.to(highlight, {
+            x: normX * 12,
+            y: normY * 12,
+            duration: 0.3,
+            ease: "power2.out",
+            overwrite: "auto",
+          });
         }
       };
 
       const handleMouseLeaveWindow = () => {
-        // Smoothly snap back to dead-center when the user alt-tabs or cursor leaves
-        setRotateX(0);
-        setRotateY(0);
-        setTranslateX(0);
-        setTranslateY(0);
-        if (setHighlightX && setHighlightY) {
-          setHighlightX(0);
-          setHighlightY(0);
+        // Pattern 1: Explicit 0 reset directly into neutral position
+        gsap.to(imageWrapper, {
+          rotateX: 0,
+          rotateY: 0,
+          x: 0,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+
+        if (highlight) {
+          gsap.to(highlight, {
+            x: 0,
+            y: 0,
+            duration: 0.45,
+            ease: "power2.out",
+            overwrite: "auto",
+          });
         }
       };
 
@@ -129,7 +127,7 @@ export function InteractiveAvatar({
           priority
         />
 
-        {/* Ambient dynamic reflection that shifts opposite to head angle */}
+        {/* Dynamic ambient highlight */}
         <div
           ref={highlightRef}
           className="pointer-events-none absolute inset-0 bg-linear-to-tr from-transparent via-white/5 to-white/15 opacity-60 rounded-xl will-change-transform"
