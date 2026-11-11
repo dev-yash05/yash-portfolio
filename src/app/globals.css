@@ -11,7 +11,7 @@
   --card-foreground: #0a0a0a;
   --border: #e4e4e7;
   /* Deep punchy lime for text in light mode so it doesn't wash out */
-  --accent: #4d7c0f; 
+  --accent: #4d7c0f;
   --accent-bg: #ecfccb;
   --accent-foreground: #ffffff;
   color-scheme: light;
@@ -54,6 +54,30 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
-    transition: background-color 0.15s ease, color 0.15s ease;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
   }
+}
+
+/* Lenis Recommended Rules */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
